@@ -25,7 +25,7 @@
 (defmethod ask :network
   [player question items]
   (let [connection (:connection player)
-        message (clojure.string/join "\n" (into [question] items))]
+        message (clojure.string/join "\n" (cons question items))]
     (send-message connection message)
     (receive-message connection)))
 
